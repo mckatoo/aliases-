@@ -1,5 +1,5 @@
-#ifndef ADD_COMMAND_H
-#define ADD_COMMAND_H
+#ifndef __ADD_COMMAND_H
+#define __ADD_COMMAND_H
 
 #include <string>
 using namespace std;

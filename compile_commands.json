@@ -1,0 +1,16 @@
+[
+{
+  "directory": "/home/mckatoo/projetos/c++/aliases",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-Wall", "-Werror", "-O3", "-std=c++23", "-I", "/home/mckatoo/.xmake/packages/g/gtest/v1.15.2/aea99fd8f63a47f0a0b9fe284bee1bfa/include", "-DNDEBUG", "-o", "build/.objs/tests/linux/x86_64/release/tests/test_add_command.cpp.o", "tests/test_add_command.cpp"],
+  "file": "tests/test_add_command.cpp"
+},
+{
+  "directory": "/home/mckatoo/projetos/c++/aliases",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-Wall", "-Werror", "-O3", "-std=c++23", "-Iinclude", "-DNDEBUG", "-o", "build/.objs/aliases/linux/x86_64/release/src/main.cpp.o", "src/main.cpp"],
+  "file": "src/main.cpp"
+},
+{
+  "directory": "/home/mckatoo/projetos/c++/aliases",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-fvisibility=hidden", "-fvisibility-inlines-hidden", "-Wall", "-Werror", "-O3", "-std=c++23", "-Iinclude", "-DNDEBUG", "-o", "build/.objs/aliases/linux/x86_64/release/src/commands/add_command.cpp.o", "src/commands/add_command.cpp"],
+  "file": "src/commands/add_command.cpp"
+}]

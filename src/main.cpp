@@ -1,4 +1,4 @@
-#include "include/add_command.hpp"
+#include "add_command.h"
 #include <cstdlib>
 #include <iostream>
 #include <string>
@@ -9,12 +9,6 @@ void help() {
           "\n";
   exit(0);
 }
-
-// void addCommand(const string &name, const string &command) {
-//   string alias = "alias " + name + "=\"" + command + "\"\n";
-//   cout << alias << endl;
-//   exit(0);
-// }
 
 int main(int argc, char *argv[]) {
   if (argc < 2) {

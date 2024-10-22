@@ -1,3 +1,4 @@
+#include "add_command.h"
 #include <iostream>
 #include <string>
 

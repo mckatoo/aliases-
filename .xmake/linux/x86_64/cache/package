@@ -1,0 +1,32 @@
+{
+    gtest = {
+        __enabled = true,
+        __requireconfs = {
+            configs = {
+                main = false,
+                gmock = true
+            }
+        },
+        libfiles = {
+            "/home/mckatoo/.xmake/packages/g/gtest/v1.15.2/aea99fd8f63a47f0a0b9fe284bee1bfa/lib/libgmock.a",
+            "/home/mckatoo/.xmake/packages/g/gtest/v1.15.2/aea99fd8f63a47f0a0b9fe284bee1bfa/lib/libgtest.a"
+        },
+        links = {
+            "gmock",
+            "gtest"
+        },
+        version = "v1.15.2",
+        __requirestr = "gtest",
+        sysincludedirs = "/home/mckatoo/.xmake/packages/g/gtest/v1.15.2/aea99fd8f63a47f0a0b9fe284bee1bfa/include",
+        installdir = "/home/mckatoo/.xmake/packages/g/gtest/v1.15.2/aea99fd8f63a47f0a0b9fe284bee1bfa",
+        linkdirs = "/home/mckatoo/.xmake/packages/g/gtest/v1.15.2/aea99fd8f63a47f0a0b9fe284bee1bfa/lib",
+        syslinks = "pthread",
+        static = true,
+        envs = {
+            LD_LIBRARY_PATH = {
+                "/home/mckatoo/.xmake/packages/g/gtest/v1.15.2/aea99fd8f63a47f0a0b9fe284bee1bfa/lib"
+            }
+        },
+        license = "BSD-3"
+    }
+}
