@@ -1,4 +1,4 @@
-#include "../include/add_command.h"
+#include "add_command.h"
 #include <gtest/gtest.h>
 
 TEST(AddCommandTest, AddCommandWithSuccess) {

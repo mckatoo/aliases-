@@ -6,6 +6,7 @@ set_version("1.0.0")
 set_languages("c++latest")
 
 add_rules("mode.debug", "mode.release")
+add_includedirs("include")
 
 set_warnings("all", "error")
 
@@ -18,7 +19,7 @@ else
   set_strip("all")
 end
 
-function add_platform_specific_flags()
+local function add_platform_specific_flags()
   if is_plat("windows") then
     add_cxxflags("/EHsc")
   else
@@ -30,17 +31,33 @@ target("aliases")
 set_kind("binary")
 add_files("src/*.cpp")
 add_files("src/**/*.cpp")
-add_includedirs("include")
 add_platform_specific_flags()
 target_end()
 
 add_requires("gtest", { configs = { main = false, gmock = true } })
 
-target("tests")
-set_kind("binary")
-add_packages("gtest")
-set_default(false)
-add_files("tests/test_*.cpp")
-add_tests("default")
-add_deps("aliases")
-target_end()
+-- target("tests")
+-- set_kind("binary")
+-- add_packages("gtest")
+-- set_default(false)
+-- add_tests("default")
+-- add_files("src/*.cpp")
+-- add_files("src/**/*.cpp")
+-- add_files("tests/test_*.cpp")
+-- remove_files("src/main.cpp")
+-- add_platform_specific_flags()
+-- target_end()
+
+for _, file in ipairs(os.files("tests/test_*.cpp")) do
+  local name = path.basename(file)
+  target(name)
+  set_kind("binary")
+  add_packages("gtest")
+  set_default(false)
+  add_files(file)
+  add_files("src/*.cpp")
+  add_files("src/**/*.cpp")
+  remove_files("src/main.cpp")
+  add_tests("default")
+  add_platform_specific_flags()
+end
