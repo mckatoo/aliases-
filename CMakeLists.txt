@@ -63,7 +63,7 @@ target_link_options(aliases PRIVATE
 target_sources(aliases PRIVATE
     src/main.cpp
     src/commands/add_command.cpp
-    src/utils/file_reader.cpp
+    src/utils/file_handler.cpp
 )
 
 # target
@@ -133,20 +133,20 @@ target_link_options(test_add_command PRIVATE
 target_sources(test_add_command PRIVATE
     tests/test_add_command.cpp
     src/commands/add_command.cpp
-    src/utils/file_reader.cpp
+    src/utils/file_handler.cpp
 )
 
 # target
-add_executable(test_file_reader "")
-set_target_properties(test_file_reader PROPERTIES OUTPUT_NAME "test_file_reader")
-set_target_properties(test_file_reader PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/build/linux/x86_64/release")
-target_include_directories(test_file_reader PRIVATE
+add_executable(test_file_handler "")
+set_target_properties(test_file_handler PROPERTIES OUTPUT_NAME "test_file_handler")
+set_target_properties(test_file_handler PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/build/linux/x86_64/release")
+target_include_directories(test_file_handler PRIVATE
     include
 )
-target_include_directories(test_file_reader SYSTEM PRIVATE
+target_include_directories(test_file_handler SYSTEM PRIVATE
     /home/mckatoo/.xmake/packages/g/gtest/v1.15.2/aea99fd8f63a47f0a0b9fe284bee1bfa/include
 )
-target_compile_options(test_file_reader PRIVATE
+target_compile_options(test_file_handler PRIVATE
     $<$<COMPILE_LANGUAGE:C>:-m64>
     $<$<COMPILE_LANGUAGE:CXX>:-m64>
     $<$<COMPILE_LANGUAGE:C>:-DNDEBUG>
@@ -154,55 +154,55 @@ target_compile_options(test_file_reader PRIVATE
     $<$<COMPILE_LANGUAGE:CUDA>:-DNDEBUG>
 )
 if(MSVC)
-    target_compile_options(test_file_reader PRIVATE -W3)
-    target_compile_options(test_file_reader PRIVATE -WX)
+    target_compile_options(test_file_handler PRIVATE -W3)
+    target_compile_options(test_file_handler PRIVATE -WX)
 elseif(Clang)
-    target_compile_options(test_file_reader PRIVATE -Wall)
-    target_compile_options(test_file_reader PRIVATE -Werror)
+    target_compile_options(test_file_handler PRIVATE -Wall)
+    target_compile_options(test_file_handler PRIVATE -Werror)
 elseif(Gcc)
-    target_compile_options(test_file_reader PRIVATE -Wall)
-    target_compile_options(test_file_reader PRIVATE -Werror)
+    target_compile_options(test_file_handler PRIVATE -Wall)
+    target_compile_options(test_file_handler PRIVATE -Werror)
 endif()
-set_target_properties(test_file_reader PROPERTIES CXX_EXTENSIONS OFF)
+set_target_properties(test_file_handler PROPERTIES CXX_EXTENSIONS OFF)
 foreach(standard 26 23 20 17 14 11 98)
     include(CheckCXXCompilerFlag)
     if(MSVC)
-        check_cxx_compiler_flag("/std:c++${standard}" test_file_reader_support_c++_standard_${standard})
+        check_cxx_compiler_flag("/std:c++${standard}" test_file_handler_support_c++_standard_${standard})
     else()
-        check_cxx_compiler_flag("-std=c++${standard}" test_file_reader_support_c++_standard_${standard})
+        check_cxx_compiler_flag("-std=c++${standard}" test_file_handler_support_c++_standard_${standard})
     endif()
-    if(test_file_reader_support_c++_standard_${standard})
-        target_compile_features(test_file_reader PRIVATE cxx_std_${standard})
+    if(test_file_handler_support_c++_standard_${standard})
+        target_compile_features(test_file_handler PRIVATE cxx_std_${standard})
         break()
     endif()
 endforeach()
 if(MSVC)
-    target_compile_options(test_file_reader PRIVATE $<$<CONFIG:Release>:-O2>)
+    target_compile_options(test_file_handler PRIVATE $<$<CONFIG:Release>:-O2>)
 else()
-    target_compile_options(test_file_reader PRIVATE -O3)
+    target_compile_options(test_file_handler PRIVATE -O3)
 endif()
 if(MSVC)
 else()
-    target_compile_options(test_file_reader PRIVATE -fvisibility=hidden)
+    target_compile_options(test_file_handler PRIVATE -fvisibility=hidden)
 endif()
 if(MSVC)
-    set_property(TARGET test_file_reader PROPERTY
+    set_property(TARGET test_file_handler PROPERTY
         MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
 endif()
-target_link_libraries(test_file_reader PRIVATE
+target_link_libraries(test_file_handler PRIVATE
     gmock
     gtest
     pthread
 )
-target_link_directories(test_file_reader PRIVATE
+target_link_directories(test_file_handler PRIVATE
     /home/mckatoo/.xmake/packages/g/gtest/v1.15.2/aea99fd8f63a47f0a0b9fe284bee1bfa/lib
 )
-target_link_options(test_file_reader PRIVATE
+target_link_options(test_file_handler PRIVATE
     -m64
 )
-target_sources(test_file_reader PRIVATE
-    tests/test_file_reader.cpp
+target_sources(test_file_handler PRIVATE
+    tests/test_file_handler.cpp
     src/commands/add_command.cpp
-    src/utils/file_reader.cpp
+    src/utils/file_handler.cpp
 )
 
